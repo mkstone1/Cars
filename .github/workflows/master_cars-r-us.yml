@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'Cars-R-us'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6A969DDAC5C64B1D9F706423C6D5B376 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A7A70887D76146B4BDE785322EF3CC11 }}
           package: '*.war'
