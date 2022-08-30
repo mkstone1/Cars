@@ -60,5 +60,11 @@ public class SetupDevUsers implements ApplicationRunner {
 
         Car car1 = new Car("BMW", "z3", 5000);
         carRepository.save(car1);
+
+        Car car2 = Car.builder()
+                .brand("Volvo")
+                .model("V60")
+                .pricePerDay(2000)
+                .build();
     }
 }

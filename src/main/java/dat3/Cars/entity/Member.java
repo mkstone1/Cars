@@ -19,25 +19,24 @@ import java.util.List;
 
 public class Member extends UserWithRoles {
 
-    public Member(String username,  String password, String email, String firstName) {
-        super(username, password, email );
-        this.firstName = firstName;
-    }
-
-
+    @Column(length = 30)
     private String firstName;
 
+    @Column(length = 50)
     private String lastName;
 
+    @Column(length = 50)
     private String street;
 
+    @Column(length = 50)
     private String city;
 
-    private int zip;
+    @Column(length = 20)
+    private String zip;
+
 
     private boolean approved;
-
-    private double ranking;
+    private int ranking;
 
     @CreationTimestamp
     private LocalDateTime dateCreated;
@@ -47,5 +46,14 @@ public class Member extends UserWithRoles {
 
     public Member() {
 
+    }
+
+    public Member(String user, String password, String email, String firstName, String lastName, String street, String city, String zip) {
+        super(user, password, email);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.city = city;
+        this.zip = zip;
     }
 }
