@@ -2,8 +2,8 @@ package dat3.Cars.entity;
 
 import dat3.security.entity.Role;
 import dat3.security.entity.UserWithRoles;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -15,8 +15,12 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 
+@Entity
 public class Member extends UserWithRoles {
 
     @Column(length = 30)
@@ -44,9 +48,6 @@ public class Member extends UserWithRoles {
     @UpdateTimestamp
     private LocalDateTime dateEdited;
 
-    public Member() {
-
-    }
 
     public Member(String user, String password, String email, String firstName, String lastName, String street, String city, String zip) {
         super(user, password, email);

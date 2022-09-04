@@ -55,8 +55,10 @@ public class SetupDevUsers implements ApplicationRunner {
         userWithRolesRepository.save(user3);
 
 
-        Member mem1 = new Member("username1", passwordUsedByAll, "mail@mail.dk", "name");
-        memberRepository.save(mem1);
+        Member m1 = new Member("member1", passwordUsedByAll, "memb1@a.dk", "Kurt", "Wonnegut", "Lyngbyvej 2", "Lynbby", "2800");
+        Member m2 = new Member("member2", passwordUsedByAll, "memb2@a.dk", "Taber", "Hans", "Lyngbyvej 24", "KBH", "2400");
+        memberRepository.save(m1);
+        memberRepository.save(m2);
 
         Car car1 = new Car("BMW", "z3", 5000);
         carRepository.save(car1);
@@ -66,5 +68,6 @@ public class SetupDevUsers implements ApplicationRunner {
                 .model("V60")
                 .pricePerDay(2000)
                 .build();
+        carRepository.save(car2);
     }
 }
