@@ -3,7 +3,6 @@ package dat3.Cars.api;
 
 import dat3.Cars.dto.CarRequest;
 import dat3.Cars.dto.CarResponse;
-import dat3.Cars.dto.MemberRequest;
 import dat3.Cars.service.CarService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

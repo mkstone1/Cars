@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -21,6 +23,8 @@ public class MemberResponse {
     String street;
     String city;
     String zip;
+
+    List<ReservationResponse> reservations;
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss",shape = JsonFormat.Shape.STRING)
     LocalDateTime created;
 
@@ -37,10 +41,13 @@ public class MemberResponse {
         this.lastName = m.getLastName();
         this.city = m.getCity();
         this.zip = m.getZip();
+        List<ReservationResponse> reservations = m.getReservations().stream().map(reservation -> new ReservationResponse(reservation)).collect(Collectors.toList());
+        this.reservations = reservations;
         if(includeAll){
             this.created = m.getCreated();
             this.edited = m.getEdited();
             this.ranking = m.getRanking();
         }
     }
+
 }

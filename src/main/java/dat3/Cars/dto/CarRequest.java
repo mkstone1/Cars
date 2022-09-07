@@ -1,14 +1,10 @@
 package dat3.Cars.dto;
 
 import dat3.Cars.entity.Car;
-import dat3.Cars.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
-
 
 @Getter
 @Setter

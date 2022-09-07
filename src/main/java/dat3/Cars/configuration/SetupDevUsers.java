@@ -2,14 +2,18 @@ package dat3.Cars.configuration;
 
 import dat3.Cars.entity.Car;
 import dat3.Cars.entity.Member;
+import dat3.Cars.entity.Reservation;
 import dat3.Cars.repository.CarRepository;
 import dat3.Cars.repository.MemberRepository;
+import dat3.Cars.repository.ReservationRepository;
 import dat3.security.entity.Role;
 import dat3.security.entity.UserWithRoles;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Controller;
 import dat3.security.repository.UserWithRolesRepository;
+
+import java.time.LocalDate;
 
 @Controller
 public class SetupDevUsers implements ApplicationRunner {
@@ -19,13 +23,17 @@ public class SetupDevUsers implements ApplicationRunner {
 
     CarRepository carRepository;
 
+    ReservationRepository reservationRepository;
+
     String passwordUsedByAll;
 
-    public SetupDevUsers(UserWithRolesRepository userWithRolesRepository, MemberRepository memberRepository, CarRepository carRepository) {
+    public SetupDevUsers(UserWithRolesRepository userWithRolesRepository, MemberRepository memberRepository,
+                         CarRepository carRepository, ReservationRepository reservationRepository) {
         this.userWithRolesRepository = userWithRolesRepository;
         this.memberRepository = memberRepository;
         passwordUsedByAll = "test12";
         this.carRepository = carRepository;
+        this.reservationRepository = reservationRepository;
     }
 
     @Override
@@ -69,5 +77,16 @@ public class SetupDevUsers implements ApplicationRunner {
                 .pricePerDay(2000)
                 .build();
         carRepository.save(car2);
+
+        Reservation res1 = Reservation.builder()
+                .car(car1)
+                .member(m1)
+                .rentalDate(LocalDate.now())
+                .build();
+
+        reservationRepository.save(res1);
+
+
+        System.out.println(car1.getReservations());
     }
 }
