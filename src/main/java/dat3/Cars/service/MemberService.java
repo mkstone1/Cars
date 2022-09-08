@@ -1,7 +1,9 @@
 package dat3.Cars.service;
 
+import dat3.Cars.dto.CarRequest;
 import dat3.Cars.dto.MemberRequest;
 import dat3.Cars.dto.MemberResponse;
+import dat3.Cars.entity.Car;
 import dat3.Cars.entity.Member;
 import dat3.Cars.repository.MemberRepository;
 import org.springframework.http.HttpStatus;
@@ -41,6 +43,27 @@ public class MemberService {
         return new MemberResponse(found,false);
     }
 
+    public void editMember(MemberRequest body, String username){
+        Member member = memberRepository.findById(username).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found"));
+        member.setFirstName(body.getFirstName());
+        member.setLastName(body.getLastName());
+        member.setCity(body.getCity());
+        member.setZip(body.getZip());
+        member.setStreet(body.getStreet());
+        member.setEmail(body.getEmail());
+        member.setPassword(body.getPassword());
+        memberRepository.save(member);
+    }
 
 
+    public void setRanking(String username, int value) {
+        Member member = memberRepository.findById(username).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found"));
+        member.setRanking(value);
+        memberRepository.save(member);
+
+    }
+
+    public void deleteUser(String username){
+        memberRepository.deleteById(username);
+    }
 }

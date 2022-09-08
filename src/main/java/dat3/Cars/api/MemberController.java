@@ -4,7 +4,6 @@ package dat3.Cars.api;
 import dat3.Cars.dto.MemberRequest;
 import dat3.Cars.dto.MemberResponse;
 import dat3.Cars.service.MemberService;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,16 +48,21 @@ public class MemberController {
     //Security USER/ADMIN???
     @PutMapping("/{username}")
     ResponseEntity<Boolean> editMember(@RequestBody MemberRequest body, @PathVariable String username){
+        memberService.editMember(body, username);
         return null;
     }
 
     //Security ADMIN????
     @PatchMapping("/ranking/{username}/{value}")
-    void setRankingForUser(@PathVariable String username, @PathVariable int value) {}
+    void setRankingForUser(@PathVariable String username, @PathVariable int value) {
+        memberService.setRanking(username, value);
+    }
 
     // Security ADMIN????
     @DeleteMapping("/{username}")
-    void deleteMemberByUsername(@PathVariable String username) {}
+    void deleteMemberByUsername(@PathVariable String username) {
+        memberService.deleteUser(username);
+    }
 
 
 
