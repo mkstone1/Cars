@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: dat3.ApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.271 s - in dat3.ApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.597 s - in dat3.ApplicationTests

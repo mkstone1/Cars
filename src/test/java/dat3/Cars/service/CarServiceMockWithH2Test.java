@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DataJpaTest
 public class CarServiceMockWithH2Test {
 
-
+/*
     public  CarService carService;
 
     public  static CarRepository carRepository;
@@ -88,4 +88,6 @@ public class CarServiceMockWithH2Test {
         carService.deleteCarById(1);
         assertEquals(1,carRepository.findAll().size());
     }
+    */
+
 }
